@@ -437,6 +437,7 @@ MonoBehaviour:
   - {fileID: 1764106598}
   - {fileID: 1301341549}
   cloud: {fileID: 7539894730764449133, guid: b645a92f0c25fe54d8ece2c8e0414d32, type: 3}
+  bird: {fileID: 2468497212085732243, guid: 872b65b0c785d0f4e88d1945b39fd1a7, type: 3}
   spawnInterval: 1
 --- !u!4 &961071326
 Transform:
