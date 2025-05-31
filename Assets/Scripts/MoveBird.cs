@@ -1,26 +1,45 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+
 
 public class MoveBird : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI lifeStatus;
+    private GameObject spawnBulletPoint;
+    [SerializeField]
+    private GameObject bullet;
     [SerializeField]
     private float speed = 5.0f;
     [SerializeField]
-    int lifeCounter = 3;
+    private int lifeCounter = 0;
     private Vector3 moveVector;
     public int moveDirection = 0;
+    [SerializeField]
+    private UnityEngine.UI.Image[] hearts;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         moveVector = new Vector3(0, speed);
-        lifeStatus.text = lifeCounter.ToString();
+        lifeCounter = hearts.Length;
     }
+
+    public void fire()
+    {
+        GameObject bulletObject = Instantiate(bullet); 
+        bulletObject.transform.position = spawnBulletPoint.transform.position;
+    } 
     public void updateLife(int life)
     {
         lifeCounter += life;
-        lifeStatus.text = lifeCounter.ToString();
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].enabled = i < lifeCounter;
+
+        }
     }// Update is called once per frame
     void Update()
     {
