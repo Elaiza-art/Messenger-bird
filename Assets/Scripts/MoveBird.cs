@@ -1,6 +1,7 @@
 using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -16,8 +17,7 @@ public class MoveBird : MonoBehaviour
     private float speed = 5.0f;
     [SerializeField]
     private int lifeCounter = 0;
-    private Vector3 moveVector;
-    public int moveDirection = 0;
+    Vector3 moveVector;
     [SerializeField]
     private UnityEngine.UI.Image[] hearts;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,19 +37,17 @@ public class MoveBird : MonoBehaviour
         lifeCounter += life;
         for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[i].enabled = i < lifeCounter;
-
+            hearts[i].enabled = i < lifeCounter;}
+        if (lifeCounter == 0) 
+        {
+            GetComponent<Animation>().Play("dead_bird");
         }
-    }// Update is called once per frame
-    void Update()
+    }
+    // Update is called once per frame
+    public void Update()
     {
-        if (transform.position.y < 3.71 && moveDirection == 1)
-        {
-            transform.Translate(moveVector * Time.deltaTime);
-        }
-        else if (transform.position.y > -3.58 && moveDirection == -1)
-        {
-            transform.Translate(- moveVector * Time.deltaTime);
-        }
+        if(transform.position.y < -9.5f) { 
+            SceneManager.LoadScene("GameOver");
+        } 
     }
 }

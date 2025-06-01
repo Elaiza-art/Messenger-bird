@@ -10,6 +10,7 @@ public class SpawnCloud : MonoBehaviour
     private GameObject bird;
     [SerializeField]
     private float spawnInterval = 1.0f;
+    [SerializeField]
     private float spawnBirdInterval = 2.0f;
 
     void Start()
@@ -33,7 +34,7 @@ public class SpawnCloud : MonoBehaviour
         GameObject bi = Instantiate(bird);
         Vector3 position = spownPoint[index].transform.position;
         bi.transform.position = position;
-        Invoke("SpownBird", spawnInterval);
+        Invoke("SpownBird", spawnBirdInterval);
     }
 
     // Update is called once per frame

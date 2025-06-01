@@ -1,11 +1,13 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MoveButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]
     private GameObject bird;
-    private MoveBird birdScript;
+    private BirdParentMove birdScript;
     [SerializeField]
     private int moveDirection;
     public void OnPointerDown(PointerEventData eventData)
@@ -21,6 +23,6 @@ public class MoveButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        birdScript = bird.GetComponent<MoveBird>();
+        birdScript = bird.GetComponent<BirdParentMove>();
     }
-}
+ }
