@@ -296,7 +296,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 245663142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f1b41caf65dc664d9a8040ea077fc45, type: 3}
+  m_Script: {fileID: 11500000, guid: 049b829bd8450384a80975a39b4c5f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &289163821
@@ -838,8 +838,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 245663144}
-        m_TargetAssemblyTypeName: "ButtonCli\u0441k, Assembly-CSharp"
-        m_MethodName: "onButtonCli\u0441k"
+        m_TargetAssemblyTypeName: GameManager1, Assembly-CSharp
+        m_MethodName: onGameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

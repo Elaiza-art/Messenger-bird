@@ -1,12 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class AngryBirrd : MonoBehaviour
+public class ItemsEggs : MonoBehaviour
 {
     [SerializeField]
     private float speed = 9.0f;
     [SerializeField]
-    public int damage = -1;
+    public int quantity = 3;
     private Vector3 moveVector;
     private float randomSpeed;
     private GameObject scoreManager;
@@ -15,23 +14,13 @@ public class AngryBirrd : MonoBehaviour
     {
         randomSpeed = Random.Range(2.3f, speed);
         moveVector = new Vector3(-randomSpeed, 0);
-        scoreManager = GameObject.Find("Score");
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag.Equals("bullet"))
-        {
-            Destroy(gameObject);
-        }
-    }
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
     {
         transform.Translate(moveVector * Time.deltaTime);
         if (transform.position.x < -13)
         {
-            scoreManager.GetComponent<ScoreManager1>().addToScore();
             Destroy(gameObject);
         }
     }

@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5579400893647607703}
   - component: {fileID: 7627051386942708064}
-  - component: {fileID: 2851292918752368839}
   - component: {fileID: 2913939649955704091}
   - component: {fileID: 23784109995250721}
   m_Layer: 0
   m_Name: angryBird
-  m_TagString: Untagged
+  m_TagString: angryBird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,20 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2851292918752368839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2468497212085732243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25286831408018c44a3f3b29e2d492b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  moveDirection: 0
 --- !u!114 &2913939649955704091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  damage: -1
 --- !u!61 &23784109995250721
 BoxCollider2D:
   m_ObjectHideFlags: 0
