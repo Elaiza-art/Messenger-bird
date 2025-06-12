@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4898430524505084049}
   - component: {fileID: 3865128387577437037}
   - component: {fileID: 3989029302801887993}
+  - component: {fileID: 3794483540829064316}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Egg
@@ -176,3 +177,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 3
+--- !u!114 &3794483540829064316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497335393338863614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec8e2b375811de489cd757a73eedd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectSound: {fileID: 8300000, guid: aea82d9657ed81c48a7915a8c427f914, type: 3}

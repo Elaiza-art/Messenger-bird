@@ -1,24 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    // Измените на public static с большой буквы для consistency
+    public static GameManager Instance;
+  
 
     void Awake()
     {
-        instance = this;
+        // Синглтон паттерн
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     public void EndGame()
     {
-        // Вариант 1: Перезагрузка сцены
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        // Вариант 2: Вывод сообщения
         Debug.Log("Game Over! Яйцо упало!");
-
-        // Вариант 3: Активация UI панели (нужен Canvas)
-        // gameOverPanel.SetActive(true);
     }
 }

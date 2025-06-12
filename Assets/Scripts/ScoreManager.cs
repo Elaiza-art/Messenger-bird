@@ -1,14 +1,45 @@
 using UnityEngine;
-using TMPro; // Важно: используем пространство имён TextMeshPro
+using TMPro;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TMP_Text scoreText; // Ссылка на TextMeshPro-компонент
+    public TMP_Text scoreText;
     private int score = 0;
+    public static ScoreManager Instance;
+
+    [Header("Hearts Settings")]
+    public Image[] hearts; // Массив изображений сердец
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    private int lives = 3;
+
+    void Awake()
+    {
+        // Синглтон паттерн с улучшенной обработкой
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        UpdateHearts();
+    }
 
     void Start()
     {
-        UpdateScoreText(); // Инициализация текста при старте
+        UpdateScoreText();
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     public void AddScore(int points)
@@ -17,8 +48,51 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
     }
 
-    private void UpdateScoreText()
+    public void LoseLife()
     {
-        scoreText.text = $"Score: {score}"; // Обновляем текст
+        if (lives <= 0) return;
+
+        lives--;
+        UpdateHearts();
+
+        if (lives <= 0)
+        {
+            EndGame();
+        }
+    }
+
+    void UpdateHearts()
+    {
+        if (hearts == null || hearts.Length < lives)
+        {
+            Debug.LogWarning("Hearts array not properly configured!");
+            return;
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (hearts[i] != null)
+            {
+                hearts[i].sprite = (i < lives) ? fullHeart : emptyHeart;
+            }
+        }
+    }
+
+    void UpdateScoreText()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = $"Score: {score}";
+        }
+        else
+        {
+            Debug.LogWarning("Score Text reference is missing!");
+        }
+    }
+
+    void EndGame()
+    {
+        Debug.Log("Game Over!");
+        // Здесь можно добавить вызов события или перезагрузку уровня
     }
 }
