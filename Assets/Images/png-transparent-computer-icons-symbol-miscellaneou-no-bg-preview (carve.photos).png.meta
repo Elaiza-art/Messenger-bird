@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      png-transparent-computer-icons-symbol-miscellaneou-no-bg-preview (carve.photos)_0: -6563737287454352002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

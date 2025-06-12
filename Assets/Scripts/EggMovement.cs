@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class EggMovement : MonoBehaviour
 {
-    public float fallSpeed = 3f;
+    public float fallSpeed;
+
+    void Start()
+    {
+        fallSpeed = Random.Range(2f, 5f);
+    }
 
     void Update()
     {
@@ -14,4 +19,5 @@ public class EggMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 }

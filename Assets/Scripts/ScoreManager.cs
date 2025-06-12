@@ -1,14 +1,24 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro; // Важно: используем пространство имён TextMeshPro
 
-public class ScoreManager : MonoBehaviour 
+public class ScoreManager : MonoBehaviour
 {
-    public Text scoreText;
+    public TMP_Text scoreText; // Ссылка на TextMeshPro-компонент
     private int score = 0;
+
+    void Start()
+    {
+        UpdateScoreText(); // Инициализация текста при старте
+    }
 
     public void AddScore(int points)
     {
         score += points;
-        scoreText.text = "Score: " + score;
+        UpdateScoreText();
+    }
+
+    private void UpdateScoreText()
+    {
+        scoreText.text = $"Score: {score}"; // Обновляем текст
     }
 }
