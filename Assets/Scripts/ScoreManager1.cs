@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ScoreManager1 : MonoBehaviour
 {
-    private int scoreCounter = 0;
+    public int scoreCounter = 0;
     [SerializeField]
     private TextMeshProUGUI score;
     void Start()
