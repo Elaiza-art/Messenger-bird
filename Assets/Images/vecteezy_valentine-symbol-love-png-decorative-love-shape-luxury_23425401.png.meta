@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 706b1d590d9ae824cb5e21cd68a9c5ac
+guid: 3785f11332151c14fa8e22e799e31d3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3715154059567068651
-    second: freepik__the-style-is-pixel-art-with-a-retro-8bit-pixelated__675286_0
+      213: -2541319997150101096
+    second: vecteezy_valentine-symbol-love-png-decorative-love-shape-luxury_23425401_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: freepik__the-style-is-pixel-art-with-a-retro-8bit-pixelated__675286_0
+      name: vecteezy_valentine-symbol-love-png-decorative-love-shape-luxury_23425401_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1216
-        height: 832
+        x: 479
+        y: 468
+        width: 3212
+        height: 2999
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be57856fee0ee8330800000000000000
-      internalID: 3715154059567068651
+      spriteID: 89185455dea6bbcd0800000000000000
+      internalID: -2541319997150101096
       vertices: []
       indices: 
       edges: []
@@ -160,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      freepik__the-style-is-pixel-art-with-a-retro-8bit-pixelated__675286_0: 3715154059567068651
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,7 +13,7 @@ public class ScoreManager1 : MonoBehaviour
     }
 
     public void addToScore()
-    {
+    { 
         scoreCounter++;
         score.text = "—чет: " + scoreCounter;
     }
