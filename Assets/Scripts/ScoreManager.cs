@@ -10,11 +10,13 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     public enum GameState { Playing, GameOver }
     public GameState currentState;
+    public int scoreToWin = 30;
 
     [Header("Hearts Settings")]
     public Image[] hearts; // Массив изображений сердец
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public bool isGameActive = true;
 
     private int lives = 3;
 
@@ -50,6 +52,40 @@ public class ScoreManager : MonoBehaviour
     {
         score += points;
         UpdateScoreText();
+        if (score >= scoreToWin)
+        {
+            WinGame();
+        }
+    }
+    void WinGame()
+
+    {
+        isGameActive = false;
+        // Сохраняем результаты если нужно
+        PlayerPrefs.SetInt("LastScore", score);
+        // 1. Устанавливаем флаг окончания игры
+        isGameActive = false;
+
+        // 2. Останавливаем спавн яиц
+        EggSpawner spawner = FindObjectOfType<EggSpawner>();
+        if (spawner != null)
+        {
+            spawner.StopSpawning();
+            Destroy(spawner); // Дополнительная гарантия
+        }
+
+        // 3. Уничтожаем все существующие яйца
+        GameObject[] eggs = GameObject.FindGameObjectsWithTag("Egg");
+        foreach (GameObject egg in eggs)
+        {
+            if (egg != null) Destroy(egg);
+        }
+
+        // 4. Останавливаем время (опционально)
+        Time.timeScale = 0f;
+
+        // Загружаем сцену победы
+        SceneManager.LoadScene("WinScene");
     }
 
     public void LoseLife()
@@ -100,7 +136,7 @@ public class ScoreManager : MonoBehaviour
       
             PlayerPrefs.SetInt("LastScore", score);
 
-            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+          
         EggSpawner spawner = FindObjectOfType<EggSpawner>();
         if (spawner != null) spawner.StopSpawning();
         // 2. Уничтожение всех яиц
@@ -115,8 +151,9 @@ public class ScoreManager : MonoBehaviour
         Time.timeScale = 0f; // Полная остановка физики
 
         // 4. Переход на сцену
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("GameOverL2");
 
 
     }
+  
 }
