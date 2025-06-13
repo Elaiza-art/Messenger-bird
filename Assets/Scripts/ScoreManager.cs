@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public TMP_Text scoreText;
     private int score = 0;
     public static ScoreManager Instance;
+    public enum GameState { Playing, GameOver }
+    public GameState currentState;
 
     [Header("Hearts Settings")]
     public Image[] hearts; // Массив изображений сердец
@@ -32,6 +35,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         UpdateScoreText();
+        
     }
 
     void OnDestroy()
@@ -93,6 +97,26 @@ public class ScoreManager : MonoBehaviour
     void EndGame()
     {
         Debug.Log("Game Over!");
-        // Здесь можно добавить вызов события или перезагрузку уровня
+      
+            PlayerPrefs.SetInt("LastScore", score);
+
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+        EggSpawner spawner = FindObjectOfType<EggSpawner>();
+        if (spawner != null) spawner.StopSpawning();
+        // 2. Уничтожение всех яиц
+        GameObject[] eggs = GameObject.FindGameObjectsWithTag("Egg");
+        foreach (GameObject egg in eggs)
+        {
+            Destroy(egg);
+        }
+
+        // 3. Дополнительная гарантия
+        CancelInvoke("SpawnEgg"); // Если использовали InvokeRepeating
+        Time.timeScale = 0f; // Полная остановка физики
+
+        // 4. Переход на сцену
+        SceneManager.LoadScene("GameOver");
+
+
     }
 }
