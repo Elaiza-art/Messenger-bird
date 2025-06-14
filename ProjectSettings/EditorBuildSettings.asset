@@ -21,11 +21,14 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: eacfa70d0c412134a8c03f6faf0f40b7
   - enabled: 1
-    path: Assets/Scenes/WinScene.unity
-    guid: 7969077735edffb4b9c4bb34d9af28d1
+    path: Assets/Scenes/CutScene2.unity
+    guid: 1924ee7351da90e4abdf2d2f6d9c3175
   - enabled: 1
     path: Assets/Scenes/GameOverL2.unity
     guid: 75e729d533adaad4892389ea0d382491
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 7969077735edffb4b9c4bb34d9af28d1
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 7613da077f576e84a8110cbb6ad5579a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

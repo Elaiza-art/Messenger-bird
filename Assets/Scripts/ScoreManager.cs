@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     public int scoreToWin = 30;
 
     [Header("Hearts Settings")]
-    public Image[] hearts; // Массив изображений сердец
+    public Image[] hearts; 
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public bool isGameActive = true;
@@ -22,7 +22,6 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        // Синглтон паттерн с улучшенной обработкой
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -80,12 +79,8 @@ public class ScoreManager : MonoBehaviour
         {
             if (egg != null) Destroy(egg);
         }
-
-        // 4. Останавливаем время (опционально)
         Time.timeScale = 0f;
-
-        // Загружаем сцену победы
-        SceneManager.LoadScene("WinScene");
+        SceneManager.LoadScene("CutScene2");
     }
 
     public void LoseLife()
