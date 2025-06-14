@@ -664,11 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-<<<<<<< HEAD
-  m_Color: {r: 1, g: 1, b: 1, a: 0.57254905}
-=======
   m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
->>>>>>> ea3f5d4c112e562e8cfe30099d6adfb1c470f313
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -991,11 +987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-<<<<<<< HEAD
-  m_AnchoredPosition: {x: -2585, y: 1376}
-=======
   m_AnchoredPosition: {x: -5, y: 5}
->>>>>>> ea3f5d4c112e562e8cfe30099d6adfb1c470f313
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039656593
@@ -1430,10 +1422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 293969639}
   currentState: 0
-<<<<<<< HEAD
-=======
   scoreToWin: 30
->>>>>>> ea3f5d4c112e562e8cfe30099d6adfb1c470f313
   hearts:
   - {fileID: 168827552}
   - {fileID: 448086393}

@@ -24,11 +24,11 @@ public class EggSpawner : MonoBehaviour
         while (true)
         {
             // Проверяем состояние игры через GameManager
-            if (ScoreManager.instance != null && ScoreManager.Instance.isGameActive)
+            if (ScoreManager.Instance != null && ScoreManager.Instance.isGameActive)
             {
                 Vector2 spawnPos = new Vector2(
                     Random.Range(-8f, 8f),
-                    Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y;
+                    Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y);
 
                 Instantiate(eggPrefab, spawnPos, Quaternion.identity);
             }
@@ -67,22 +67,7 @@ public class EggSpawner : MonoBehaviour
         Vector2 spawnPos = new Vector2(randomX, topY);
         Instantiate(eggPrefab, spawnPos, Quaternion.identity);
     }
-    IEnumerator SpawnEggs()
-    {
-        while (isSpawning)
-        {
-            if (ScoreManager.Instance != null &&
-               ScoreManager.Instance.currentState == ScoreManager.GameState.Playing)
-            {
-                Vector2 spawnPos = new Vector2(
-                    Random.Range(-8f, 8f),
-                    Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y);
-
-                Instantiate(eggPrefab, spawnPos, Quaternion.identity);
-            }
-            yield return new WaitForSeconds(spawnRate);
-        }
-    }
+    
 
   
 }
