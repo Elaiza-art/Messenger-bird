@@ -7,6 +7,7 @@ public class EggSpawner : MonoBehaviour
     public float spawnRate = 1f;
     private bool isSpawning = true; // Флаг контроля спавна
     private float spawnXRange; // Убираем публичное поле, будем вычислять автоматически
+    private Coroutine spawningCoroutine;
 
     void Start()
     {
@@ -15,9 +16,35 @@ public class EggSpawner : MonoBehaviour
 
         InvokeRepeating("SpawnEgg", 1f, spawnRate);
         StartCoroutine(SpawnEggs());
+        spawningCoroutine = StartCoroutine(SpawnEggs());
 
     }
-    
+    IEnumerator SpawnEggs()
+    {
+        while (true)
+        {
+            // Проверяем состояние игры через GameManager
+            if (ScoreManager.instance != null && ScoreManager.Instance.isGameActive)
+            {
+                Vector2 spawnPos = new Vector2(
+                    Random.Range(-8f, 8f),
+                    Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y;
+
+                Instantiate(eggPrefab, spawnPos, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(spawnRate);
+        }
+    }
+
+    public void StopSpawning()
+    {
+        if (spawningCoroutine != null)
+        {
+            StopCoroutine(spawningCoroutine);
+            spawningCoroutine = null;
+        }
+    }
+
 
     // Метод для расчета границ спавна
     void CalculateScreenBounds()
@@ -57,9 +84,5 @@ public class EggSpawner : MonoBehaviour
         }
     }
 
-    public void StopSpawning()
-    {
-        isSpawning = false;
-        StopAllCoroutines(); // Экстренная остановка
-    }
+  
 }
