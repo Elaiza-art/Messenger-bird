@@ -46,10 +46,9 @@ public class EggSpawner : MonoBehaviour
     }
 
 
-    // Метод для расчета границ спавна
+
     void CalculateScreenBounds()
     {
-        // Рассчитываем ширину экрана в мировых координатах
         float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
 
         spawnXRange = screenWidth - 1f;

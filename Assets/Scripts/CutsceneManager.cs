@@ -39,12 +39,9 @@ public class CutsceneManager : MonoBehaviour
 
         if (textBackgroundPanel != null)
         {
-            // Начальная прозрачность 0
             Color bgColor = textBackgroundPanel.color;
             bgColor.a = 0f;
             textBackgroundPanel.color = bgColor;
-
-            // Скрываем до времени
             textBackgroundPanel.gameObject.SetActive(false);
         }
     }
@@ -138,7 +135,6 @@ public class CutsceneManager : MonoBehaviour
 
     private IEnumerator TransitionToNextLevel()
     {
-        // Сначала скрываем фон текста
         if (textBackgroundPanel != null)
         {
             float timer = 0f;
@@ -153,7 +149,6 @@ public class CutsceneManager : MonoBehaviour
             }
         }
 
-        // Затем скрываем всю сцену
         float sceneTimer = 0f;
         while (sceneTimer < fadeDuration)
         {
