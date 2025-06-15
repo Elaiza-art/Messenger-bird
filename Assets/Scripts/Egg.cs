@@ -13,7 +13,7 @@ public class Egg : MonoBehaviour
                 AudioSource.PlayClipAtPoint(collectSound, transform.position);
             }
 
-            // “еперь будет работать, так как мы используем Instance
+            
             ScoreManager.Instance.AddScore(1);
             Destroy(gameObject);
         }

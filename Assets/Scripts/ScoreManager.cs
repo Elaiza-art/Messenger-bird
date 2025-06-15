@@ -60,20 +60,20 @@ public class ScoreManager : MonoBehaviour
 
     {
         isGameActive = false;
-        // Сохраняем результаты если нужно
+        
         PlayerPrefs.SetInt("LastScore", score);
-        // 1. Устанавливаем флаг окончания игры
+        
         isGameActive = false;
 
-        // 2. Останавливаем спавн яиц
+   
         EggSpawner spawner = FindObjectOfType<EggSpawner>();
         if (spawner != null)
         {
             spawner.StopSpawning();
-            Destroy(spawner); // Дополнительная гарантия
+            Destroy(spawner); 
         }
 
-        // 3. Уничтожаем все существующие яйца
+        
         GameObject[] eggs = GameObject.FindGameObjectsWithTag("Egg");
         foreach (GameObject egg in eggs)
         {
@@ -134,18 +134,16 @@ public class ScoreManager : MonoBehaviour
           
         EggSpawner spawner = FindObjectOfType<EggSpawner>();
         if (spawner != null) spawner.StopSpawning();
-        // 2. Уничтожение всех яиц
+        
         GameObject[] eggs = GameObject.FindGameObjectsWithTag("Egg");
         foreach (GameObject egg in eggs)
         {
             Destroy(egg);
         }
 
-        // 3. Дополнительная гарантия
-        CancelInvoke("SpawnEgg"); // Если использовали InvokeRepeating
-        Time.timeScale = 0f; // Полная остановка физики
+        CancelInvoke("SpawnEgg"); 
+        Time.timeScale = 0f; 
 
-        // 4. Переход на сцену
         SceneManager.LoadScene("GameOverL2");
 
 

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Измените на public static с большой буквы для consistency
+  
     public static GameManager Instance;
   
 

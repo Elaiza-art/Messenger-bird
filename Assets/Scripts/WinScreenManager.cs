@@ -9,14 +9,7 @@ public class WinScreenManager : MonoBehaviour
 
     public void RestartLevel1()
     {
-        // Сброс игровых параметров
-        Time.timeScale = 1f; // На случай, если игра была на паузе
-
-        // Дополнительные сбросы при необходимости
-        // PlayerPrefs.DeleteKey("CurrentHealth");
-        // ScoreManager.instance.ResetScore();
-
-        // Загрузка второго уровня
+        Time.timeScale = 1f; 
         SceneManager.LoadScene(Level1SceneName);
     }
 
