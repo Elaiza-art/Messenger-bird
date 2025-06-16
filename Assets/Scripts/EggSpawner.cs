@@ -3,37 +3,49 @@ using System.Collections;
 
 public class EggSpawner : MonoBehaviour
 {
-    public GameObject eggPrefab;
-    public float spawnRate = 1f;
-    private bool isSpawning = true; 
-    private float spawnXRange; 
+    [SerializeField] private GameObject eggPrefab;
+    [SerializeField] private float spawnRate = 1f;
+    [SerializeField] private float spawnXOffset = 1f; // Отступ от краёв экрана
+
+    private float spawnXRange;
     private Coroutine spawningCoroutine;
 
     void Start()
     {
-        // Вычисляем границы экрана
+        if (eggPrefab == null)
+        {
+            Debug.LogError("Egg prefab is not assigned!", this);
+            return;
+        }
+
         CalculateScreenBounds();
-
-        InvokeRepeating("SpawnEgg", 1f, spawnRate);
-        StartCoroutine(SpawnEggs());
         spawningCoroutine = StartCoroutine(SpawnEggs());
-
     }
+
     IEnumerator SpawnEggs()
     {
+        // Начальная задержка перед первым спавном
+        yield return new WaitForSeconds(1f);
+
         while (true)
         {
-            
             if (ScoreManager.Instance != null && ScoreManager.Instance.isGameActive)
             {
-                Vector2 spawnPos = new Vector2(
-                    Random.Range(-8f, 8f),
-                    Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y);
-
-                Instantiate(eggPrefab, spawnPos, Quaternion.identity);
+                SpawnSingleEgg();
             }
             yield return new WaitForSeconds(spawnRate);
         }
+    }
+
+    private void SpawnSingleEgg()
+    {
+        if (Camera.main == null) return;
+
+        float topY = Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y;
+        float randomX = Random.Range(-spawnXRange, spawnXRange);
+        Vector2 spawnPos = new Vector2(randomX, topY);
+
+        Instantiate(eggPrefab, spawnPos, Quaternion.identity);
     }
 
     public void StopSpawning()
@@ -45,28 +57,19 @@ public class EggSpawner : MonoBehaviour
         }
     }
 
-
-    // Метод для расчета границ спавна
-    void CalculateScreenBounds()
+    private void CalculateScreenBounds()
     {
-        // Рассчитываем ширину экрана в мировых координатах
-        float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        if (Camera.main == null) return;
 
-        spawnXRange = screenWidth - 1f;
+        float screenAspect = Camera.main.aspect;
+        float screenHeight = Camera.main.orthographicSize;
+        float screenWidth = screenHeight * screenAspect;
+
+        spawnXRange = screenWidth - spawnXOffset;
     }
 
-    void SpawnEgg()
+    void OnDestroy()
     {
-        
-        float topY = Camera.main.ViewportToWorldPoint(new Vector2(0, 1)).y;
-
-       
-        float randomX = Random.Range(-spawnXRange, spawnXRange);
-
-        Vector2 spawnPos = new Vector2(randomX, topY);
-        Instantiate(eggPrefab, spawnPos, Quaternion.identity);
+        StopSpawning();
     }
-    
-
-  
 }
