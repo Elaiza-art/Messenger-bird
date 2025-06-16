@@ -14,7 +14,7 @@ public class DeathZone : MonoBehaviour
         if (other.CompareTag("Egg"))
         {
             Destroy(other.gameObject);
-            ScoreManager.Instance.LoseLife(); // Вызов конца игры
+            ScoreManager.Instance.LoseLife(); 
         }
     }
 }

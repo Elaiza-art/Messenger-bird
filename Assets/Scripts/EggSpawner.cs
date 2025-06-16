@@ -5,7 +5,7 @@ public class EggSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject eggPrefab;
     [SerializeField] private float spawnRate = 1f;
-    [SerializeField] private float spawnXOffset = 1f; // Отступ от краёв экрана
+    [SerializeField] private float spawnXOffset = 1f; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     private float spawnXRange;
     private Coroutine spawningCoroutine;
@@ -24,7 +24,7 @@ public class EggSpawner : MonoBehaviour
 
     IEnumerator SpawnEggs()
     {
-        // Начальная задержка перед первым спавном
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         yield return new WaitForSeconds(1f);
 
         while (true)
@@ -56,11 +56,9 @@ public class EggSpawner : MonoBehaviour
             spawningCoroutine = null;
         }
     }
-
     private void CalculateScreenBounds()
     {
         if (Camera.main == null) return;
-
         float screenAspect = Camera.main.aspect;
         float screenHeight = Camera.main.orthographicSize;
         float screenWidth = screenHeight * screenAspect;

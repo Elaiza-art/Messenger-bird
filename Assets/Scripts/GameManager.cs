@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        // Синглтон паттерн
         if (Instance == null)
         {
             Instance = this;
