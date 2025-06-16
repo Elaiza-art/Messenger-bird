@@ -1,20 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class ManualButtonSetup : MonoBehaviour
+public class ExitGame : MonoBehaviour
 {
-    void Start()
+    public void QuitGame()
     {
-        // Найти кнопку по имени
-        Button exitButton = GameObject.Find("ExitButton").GetComponent<Button>();
-
-        // Добавить обработчик вручную
-        exitButton.onClick.AddListener(() =>
-        {
-            Application.Quit();
+        
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        
+        Application.Quit();
 #endif
-        });
     }
 }
